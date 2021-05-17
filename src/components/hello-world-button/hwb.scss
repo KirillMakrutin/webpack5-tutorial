@@ -1,0 +1,8 @@
+$fontSize: 20px;
+$fontColor: yellow;
+
+.hello-world-button,
+.hello-world-text {
+  font-size: $fontSize;
+  color: $fontColor;
+}
