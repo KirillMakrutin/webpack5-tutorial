@@ -1,6 +1,8 @@
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require('webpack'); // to access built-in plugins
 
 module.exports = {
   entry: "./src/index.js",
@@ -64,9 +66,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.ProgressPlugin(),
     new TerserPlugin(),
     new MiniCssExtractPlugin({
       filename: "styles.[contenthash].css",
     }),
+    new CleanWebpackPlugin(),
   ],
 };
