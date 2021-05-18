@@ -9,5 +9,5 @@ new HelloWorldButton().render();
 new Heading().render();
 
 helloWorld();
-addImage(KiwiSvg);
 addImage(Kiwi);
+addImage(KiwiSvg);
