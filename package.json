@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.production.config.js",
-    "dev": "webpack server --config webpack.dev.config.js --hot"
+    "dev": "webpack server --config webpack.dev.config.js --hot",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -30,5 +31,7 @@
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
