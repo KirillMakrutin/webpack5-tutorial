@@ -5,9 +5,12 @@ const webpack = require("webpack"); // to access built-in plugins
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    "hello-world": "./src/hello.js",
+    kiwi: "./src/kiwi.js",
+  },
   output: {
-    filename: "bundle.[contenthash].js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "./dist"),
     publicPath: "",
   },
@@ -73,14 +76,26 @@ module.exports = {
     new webpack.ProgressPlugin(),
     // new TerserPlugin(), - in production mode it's included by default
     new MiniCssExtractPlugin({
-      filename: "styles.[contenthash].css",
+      filename: "[name].[contenthash].css",
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "src/index.hbs",
+      template: "src/page-template.hbs",
+      filename: "hello-world.html",
       inject: "body",
       title: "Hello World",
-      description: "Some description",
+      description: "Some HW description",
+      minify: false,
+      chunks: ["hello-world"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "src/page-template.hbs",
+      filename: "kiwi.html",
+      inject: "body",
+      title: "Kiwi",
+      description: "Some Kiwi description",
+      minify: false,
+      chunks: ["kiwi"],
     }),
   ],
 };
