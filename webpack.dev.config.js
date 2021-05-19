@@ -4,16 +4,19 @@ const webpack = require("webpack"); // to access built-in plugins
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    "hello-world": "./src/hello.js",
+    kiwi: "./src/kiwi.js",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "./dist"),
     publicPath: "",
   },
   mode: "development",
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
-    index: "index.html",
+    index: "",
     port: 9000,
     writeToDisk: true
   },
@@ -74,10 +77,22 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "src/index.hbs",
+      template: "src/page-template.hbs",
+      filename: "hello-world.html",
       inject: "body",
       title: "Hello World",
-      description: "Some description",
+      description: "Some HW description",
+      minify: false,
+      chunks: ["hello-world"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "src/page-template.hbs",
+      filename: "kiwi.html",
+      inject: "body",
+      title: "Kiwi",
+      description: "Some Kiwi description",
+      minify: false,
+      chunks: ["kiwi"],
     }),
   ],
 };
