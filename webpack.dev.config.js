@@ -11,6 +11,12 @@ module.exports = {
     publicPath: "",
   },
   mode: "development",
+  devServer: {
+    contentBase: path.resolve(__dirname, "./dist"),
+    index: "index.html",
+    port: 9000,
+    writeToDisk: true
+  },
   module: {
     rules: [
       // copy as a resource to the dist dir

@@ -8,7 +8,7 @@ class HelloWorldButton {
   render() {
     const handleButtonClick = () => {
       const p = document.createElement("p");
-      p.innerHTML = "Hello World Text!!!";
+      p.innerHTML = "Hello World Text!!!!";
       p.classList.add(this.pClass);
       body.appendChild(p);
     };
