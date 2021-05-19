@@ -15,6 +15,12 @@ module.exports = {
     publicPath: "",
   },
   mode: "production",
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      minSize: 1024 * 3 // defines when common dependencies should be extracted to a file
+    }
+  },
   module: {
     rules: [
       // copy as a resource to the dist dir
